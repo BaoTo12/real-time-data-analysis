@@ -8,6 +8,7 @@ import jakarta.annotation.PreDestroy;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 import twitter4j.Status;
 import twitter4j.TwitterException;
@@ -25,6 +26,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 @RequiredArgsConstructor
 @ConditionalOnProperty(name = "twitter-to-kafka-service.enable-mock-tweets", havingValue = "true")
+@Primary
 public class MockKafkaStreamRunner implements StreamRunner {
     private final TwitterToKafkaServiceConfigData config;
     private final TwitterKafkaStatusListener listener;

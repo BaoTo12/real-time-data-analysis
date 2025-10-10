@@ -9,3 +9,7 @@ twitter-to-kafka-service:
   mock-min-tweet-length: 5
   mock-max-tweet-length: 15
   mock-sleep-ms: 10000
+spring:
+  output:
+    ansi:
+      enabled: ALWAYS
