@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.util.Arrays;
 
@@ -16,6 +17,7 @@ import java.util.Arrays;
 @SpringBootApplication
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
+@ComponentScan(basePackages = "com.chibao.edu")
 public class TwitterToKafkaServiceApplication implements CommandLineRunner {
 
     TwitterToKafkaServiceConfigData twitterToKafkaServiceConfigData;
