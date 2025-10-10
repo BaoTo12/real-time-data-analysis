@@ -1,10 +1,26 @@
 package com.chibao.edu;
 
+import com.chibao.edu.config.TwitterToKafkaServiceConfigData;
+import com.chibao.edu.runner.StreamRunner;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Arrays;
+
+@Slf4j
 @SpringBootApplication
-public class TwitterToKafkaServiceApplication {
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+@RequiredArgsConstructor
+public class TwitterToKafkaServiceApplication implements CommandLineRunner {
+
+    TwitterToKafkaServiceConfigData twitterToKafkaServiceConfigData;
+    StreamRunner streamRunner;
+
     public static void main(String[] args) {
         SpringApplication.run(TwitterToKafkaServiceApplication.class, args);
     }
@@ -15,4 +31,12 @@ public class TwitterToKafkaServiceApplication {
     // * ContextRefreshedEvent — published when ApplicationContext.refresh() completes (all singleton beans initialized).
     // * ApplicationStartedEvent (after context refreshed)
     // ? Option3: CommandLineRunner / ApplicationRunner that will be run after ApplicationStartedEvent and ApplicationReadyEvent
+
+
+    @Override
+    public void run(String... args) throws Exception {
+        log.info("Application start ......");
+        log.info(Arrays.toString(twitterToKafkaServiceConfigData.getTwitterKeywords().toArray()));
+        streamRunner.start();
+    }
 }
