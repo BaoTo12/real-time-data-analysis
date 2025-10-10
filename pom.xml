@@ -23,6 +23,8 @@
     <modules>
         <module>twitter-to-kafka-service</module>
         <module>app-config-data</module>
+        <module>kafka</module>
+        <module>common-config</module>
     </modules>
     <scm>
         <connection/>
@@ -36,6 +38,8 @@
         <spring-boot.version>3.5.6</spring-boot.version>
         <twitter4k.version>4.0.7</twitter4k.version>
         <lombok.version>1.18.38</lombok.version>
+        <spring-kafka.verion>3.3.10</spring-kafka.verion>
+        <spring-retry.version>2.0.12</spring-retry.version>
     </properties>
     <dependencies>
         <dependency>
@@ -49,6 +53,11 @@
             <dependency>
                 <groupId>com.example</groupId>
                 <artifactId>app-config-data</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.chibao.edu</groupId>
+                <artifactId>common-config</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <!-- ! END INTERNAL DEPs            -->
@@ -78,6 +87,18 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
                 <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.kafka</groupId>
+                <artifactId>spring-kafka</artifactId>
+                <version>${spring-kafka.verion}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.springframework.retry/spring-retry -->
+            <dependency>
+                <groupId>org.springframework.retry</groupId>
+                <artifactId>spring-retry</artifactId>
+                <version>${spring-retry.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
