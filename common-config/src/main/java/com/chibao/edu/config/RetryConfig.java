@@ -18,6 +18,20 @@ public class RetryConfig {
         RetryTemplate retryTemplate = new RetryTemplate();
 
         // ? ExponentialBackOffPolicy: Increase wait time for each entry attempt
+        ExponentialBackOffPolicy exponentialBackOffPolicy = getExponentialBackOffPolicy();
+
+        retryTemplate.setBackOffPolicy(exponentialBackOffPolicy);
+
+        // ? Retry policy — số lần thử tối đa
+        SimpleRetryPolicy simpleRetryPolicy = new SimpleRetryPolicy();
+        simpleRetryPolicy.setMaxAttempts(retryConfigData.getMaxAttempts());
+
+        retryTemplate.setRetryPolicy(simpleRetryPolicy);
+
+        return  retryTemplate;
+    }
+
+    private ExponentialBackOffPolicy getExponentialBackOffPolicy() {
         ExponentialBackOffPolicy exponentialBackOffPolicy = new ExponentialBackOffPolicy();
         // ? Đây là cơ chế “chờ tăng dần theo cấp số nhân”
         /*
@@ -37,16 +51,6 @@ public class RetryConfig {
         exponentialBackOffPolicy.setInitialInterval(retryConfigData.getInitialIntervalMs());
         exponentialBackOffPolicy.setMaxInterval(retryConfigData.getMaxIntervalMs());
         exponentialBackOffPolicy.setMultiplier(retryConfigData.getMultiplier());
-
-
-        retryTemplate.setBackOffPolicy(exponentialBackOffPolicy);
-
-        // ? Retry policy — số lần thử tối đa
-        SimpleRetryPolicy simpleRetryPolicy = new SimpleRetryPolicy();
-        simpleRetryPolicy.setMaxAttempts(retryConfigData.getMaxAttempts());
-
-        retryTemplate.setRetryPolicy(simpleRetryPolicy);
-
-        return  retryTemplate;
+        return exponentialBackOffPolicy;
     }
 }
