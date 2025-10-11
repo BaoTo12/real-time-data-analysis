@@ -1,0 +1,19 @@
+spring:
+  application:
+    # Là tên logic của ứng dụng, dùng để Spring Config Server biết file nào trong repository cần trả về.
+    # Nếu name = twitter-to-kafka-service --> config-server-repository/twitter-to-kafka-service.yml
+    # hoặc (nếu có profile): config-server-repository/twitter-to-kafka-service-twitter_to_kafka.yml
+    name: twitter-to-kafka-service
+  profiles:
+    active: twitter_to_kafka
+  cloud:
+    config:
+      # nghĩa là nó sẽ kết hợp cả hai nhóm cấu hình:
+      # twitter-to-kafka-service.yml, config-client.yml
+      name: twitter-to-kafka-service, config-client
+      # Khi app start, Spring Cloud Config Client gửi HTTP request tới server này.
+      uri: http://localhost:8888 # config server
+      fail-fast: true
+
+
+spring.config.import: "configserver:"

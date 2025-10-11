@@ -1,0 +1,24 @@
+server:
+  port: 8888
+
+logging:
+  level:
+    ROOT: INFO
+    org.spring.framework.cloud.config: DEBUG
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        # this section doesn't indicate that uses git server like github, gitlab
+        # it tells that spring cloud is using git backend and url can be
+        # ? git: --> Dùng phổ biến nhất. Có thể trỏ tới repo Git hoặc thư mục local có .git hoặc không có .git
+        # * Một remote repo (GitHub, GitLab) → https://github.com/...
+        # * Hoặc một local repo (trên ổ cứng) → file:///...
+        git:
+          # ? file:// is a file protocol like http://, https:// that indicates using the current filesystem
+          uri: file:///C:/Users/Admin/Desktop/projects/microservices-demo/config-server-repository
+          clone-on-startup: true
+    fail-fast: true
