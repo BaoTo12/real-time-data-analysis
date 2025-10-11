@@ -18,7 +18,7 @@
             <artifactId>app-config-data</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.microservices.demo</groupId>
+            <groupId>com.example</groupId>
             <artifactId>kafka-model</artifactId>
         </dependency>
         <dependency>
