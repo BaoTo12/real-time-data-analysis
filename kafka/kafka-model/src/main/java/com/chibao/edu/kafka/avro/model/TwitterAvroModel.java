@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package com.microservices.demo.kafka.avro.model;
+package com.chibao.edu.kafka.avro.model;
 
 import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
