@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.retry.backoff.ExponentialBackOffPolicy;
-import org.springframework.retry.backoff.ExponentialRandomBackOffPolicy;
 import org.springframework.retry.policy.SimpleRetryPolicy;
 import org.springframework.retry.support.RetryTemplate;
 
@@ -14,7 +13,7 @@ public class RetryConfig {
     private final RetryConfigData retryConfigData;
 
     @Bean
-    public RetryTemplate retryTemplate(){
+    public RetryTemplate retryTemplate() {
         RetryTemplate retryTemplate = new RetryTemplate();
 
         // ? ExponentialBackOffPolicy: Increase wait time for each entry attempt
@@ -28,7 +27,7 @@ public class RetryConfig {
 
         retryTemplate.setRetryPolicy(simpleRetryPolicy);
 
-        return  retryTemplate;
+        return retryTemplate;
     }
 
     private ExponentialBackOffPolicy getExponentialBackOffPolicy() {

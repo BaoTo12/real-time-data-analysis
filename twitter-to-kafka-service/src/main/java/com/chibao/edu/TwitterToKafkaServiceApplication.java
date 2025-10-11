@@ -1,6 +1,6 @@
 package com.chibao.edu;
 
-import com.chibao.edu.config.TwitterToKafkaServiceConfigData;
+import com.chibao.edu.init.StreamInitializer;
 import com.chibao.edu.runner.StreamRunner;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -9,19 +9,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
-
-import java.util.Arrays;
 
 @Slf4j
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.chibao.edu")
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
-@ComponentScan(basePackages = "com.chibao.edu")
 public class TwitterToKafkaServiceApplication implements CommandLineRunner {
 
-    TwitterToKafkaServiceConfigData twitterToKafkaServiceConfigData;
     StreamRunner streamRunner;
+    StreamInitializer streamInitializer;
 
     public static void main(String[] args) {
         SpringApplication.run(TwitterToKafkaServiceApplication.class, args);
@@ -34,11 +30,10 @@ public class TwitterToKafkaServiceApplication implements CommandLineRunner {
     // * ApplicationStartedEvent (after context refreshed)
     // ? Option3: CommandLineRunner / ApplicationRunner that will be run after ApplicationStartedEvent and ApplicationReadyEvent
 
-
     @Override
     public void run(String... args) throws Exception {
         log.info("Application start ......");
-        log.info(Arrays.toString(twitterToKafkaServiceConfigData.getTwitterKeywords().toArray()));
+        streamInitializer.init();
         streamRunner.start();
     }
 }

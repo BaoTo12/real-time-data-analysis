@@ -23,10 +23,10 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
+@Primary
 @Component
 @RequiredArgsConstructor
 @ConditionalOnProperty(name = "twitter-to-kafka-service.enable-mock-tweets", havingValue = "true")
-@Primary
 public class MockKafkaStreamRunner implements StreamRunner {
     private final TwitterToKafkaServiceConfigData config;
     private final TwitterKafkaStatusListener listener;

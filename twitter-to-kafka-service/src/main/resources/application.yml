@@ -1,3 +1,6 @@
+server:
+  port: 8873
+
 twitter-to-kafka-service:
   twitter-keywords:
     - Java
@@ -21,7 +24,7 @@ retry-config:
   max-attempts: 3
   sleep-time-ms: 200
 kafka-config:
-  bootstrap-server: localhost:19092, localhost:29092, localhost:39092
+  bootstrap-servers: localhost:19092, localhost:29092, localhost:39092
   schema-registry-url-key: schema.registry.url
   schema-registry-url: http://localhost:8081
   topic-name: twitter-topic
@@ -36,7 +39,7 @@ kafka-producer-config:
   compression-type: snappy
   acks: all
   batch-size: 16384
-  batch-boost-factor: 100
+  batch-size-boost-factor: 100
   linger-ms: 5
   request-timeout-ms: 60000
   retry-count: 5

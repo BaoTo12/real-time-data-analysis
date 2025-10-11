@@ -26,7 +26,7 @@ import java.util.concurrent.ExecutionException;
 @Component
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
-public class KafkaAdmin {
+public class KafkaAdminClient {
     KafkaConfigData kafkaConfigData;
     RetryConfigData retryConfigData;
     AdminClient adminClient;

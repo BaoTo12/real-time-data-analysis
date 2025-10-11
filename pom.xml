@@ -8,8 +8,10 @@
         <version>3.5.6</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.example</groupId>
     <artifactId>microservices-demo</artifactId>
+
     <version>0.0.1-SNAPSHOT</version>
     <name>microservices-demo</name>
     <description>Demo project for Spring Boot</description>
@@ -76,6 +78,16 @@
             <dependency>
                 <groupId>com.example</groupId>
                 <artifactId>kafka-model</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>kafka-admin</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>kafka-producer</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <!-- ! END INTERNAL DEPs            -->

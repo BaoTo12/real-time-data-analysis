@@ -1,6 +1,6 @@
 package com.chibao.edu.kafka.producer.config.service.impl;
 
-import com.chibao.edu.kafka.avro.model.TwitterAvroModel;
+import com.chibao.edu.TwitterAvroModel;
 import com.chibao.edu.kafka.producer.config.service.KafkaProducer;
 import jakarta.annotation.PreDestroy;
 import lombok.RequiredArgsConstructor;
