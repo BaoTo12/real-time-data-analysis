@@ -21,6 +21,7 @@ public class TwitterKafkaStatusListener extends StatusAdapter {
     KafkaProducer<Long, TwitterAvroModel> kafkaProducer;
     TwitterStatusToAvroTransformer twitterStatusToAvroTransformer;
 
+    // TODO: Khi một tweet mới xuất hiện, Twitter4J sẽ gọi method:
     @Override
     public void onStatus(Status status) {
         log.info("Received status text {} sending to kafka topic {}",
