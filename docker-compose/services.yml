@@ -1,4 +1,3 @@
-version: '3.7'
 services:
   twitter-to-kafka-service:
     image: ${GROUP_ID}/twitter-to-kafka-service:${SERVICE_VERSION:-latest}
@@ -7,7 +6,6 @@ services:
     volumes:
       - "./docker-logs:/workspace/twitter-to-kafka-service/logs"
     user: root
-    entrypoint: [ "check-config-server-started.sh" ]
     depends_on:
       - config-server
     environment:
@@ -22,7 +20,7 @@ services:
     networks:
       - ${GLOBAL_NETWORK:-services}
   config-server:
-    image: ${GROUP_ID}/config.server:${SERVICE_VERSION:-latest}
+    image: ${GROUP_ID}/config-server:${SERVICE_VERSION:-latest}
     ports:
       - "5006:5006"
     volumes:
