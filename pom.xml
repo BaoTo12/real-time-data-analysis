@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.6</version>
+        <version>3.5.6</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -30,14 +30,10 @@
         <module>kafka/kafka-model</module>
         <module>kafka/kafka-admin</module>
         <module>kafka/kafka-producer</module>
+        <module>kafka/kafka-consumer</module>
         <module>config-server</module>
     </modules>
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
+
     <packaging>pom</packaging>
 <!-- ! PROPERTIES    -->
     <properties>
@@ -48,7 +44,9 @@
         <spring-kafka.verion>3.3.10</spring-kafka.verion>
         <spring-retry.version>2.0.12</spring-retry.version>
         <spring-webflux.version>3.5.6</spring-webflux.version>
-        <spring-cloud-dependencies.version>2023.0.3</spring-cloud-dependencies.version>
+        <spring-cloud-dependencies.version>2025.0.0</spring-cloud-dependencies.version>
+        <avro.version>1.11.4</avro.version>
+
     </properties>
 <!--    ! COMMON DEPENDENCIES-->
     <dependencies>
@@ -67,6 +65,11 @@
     <dependencyManagement>
         <dependencies>
             <!-- ! START INTERNAL DEPs            -->
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>kafka-consumer</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.example</groupId>
                 <artifactId>app-config-data</artifactId>
@@ -153,6 +156,12 @@
 uses version of all modules of spring cloud, this will help us avoid version conflicts-->
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.avro/avro -->
+            <dependency>
+                <groupId>org.apache.avro</groupId>
+                <artifactId>avro</artifactId>
+                <version>${avro.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
