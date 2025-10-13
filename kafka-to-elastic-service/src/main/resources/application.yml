@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: kafka-to-elastic-service
+  profiles:
+    active: kafka_to_elastic
+
+  cloud:
+    config:
+      name: kafka-to-elastic-service, config-client
+      uri: localhost://8888
+      fast-fail: true
