@@ -8,6 +8,8 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.ApplicationEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.config.KafkaListenerEndpointRegistry;
 import org.springframework.messaging.handler.annotation.Header;
@@ -15,6 +17,7 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Slf4j
 @Service
@@ -25,6 +28,13 @@ public class TwitterKafkaConsumer implements KafkaConsumer<Long, TwitterAvroMode
     KafkaListenerEndpointRegistry kafkaListenerEndpointRegistry;
     KafkaAdminClient kafkaAdminClient;
     KafkaConfigData kafkaConfigData;
+
+    @EventListener
+    public void onAppStarted(ApplicationEvent applicationEvent){
+        kafkaAdminClient.checkCreatedTopics();
+        log.info("Topics with name {} is ready for operations!", kafkaConfigData.getTopicNamesToCreate().toArray());
+        Objects.requireNonNull(kafkaListenerEndpointRegistry.getListenerContainer("twitterTopicListener")).start();
+    }
 
     @Override
     @KafkaListener(id = "twitterTopicListener", topics = "${kafka-config.topic-name}")
