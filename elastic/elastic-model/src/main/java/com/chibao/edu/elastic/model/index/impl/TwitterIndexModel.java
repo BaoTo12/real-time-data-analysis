@@ -25,6 +25,7 @@ public class TwitterIndexModel implements IndexModel {
     @JsonProperty
     private String text;
 
+    // ? help translating between LocalDateTime to Date type of elastic search
     @Field(type = FieldType.Date, format = DateFormat.date_time, pattern = "uuuu-MM-dd'T'HH:mm:ssZZ")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "uuuu-MM-dd'T'HH:mm:ssZZ")
     @JsonProperty
