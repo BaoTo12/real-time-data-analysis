@@ -11,9 +11,7 @@
 
     <artifactId>elastic</artifactId>
     <packaging>pom</packaging>
-    <modules>
-        <module>elastic-index-client</module>
-    </modules>
+
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
