@@ -2,8 +2,12 @@ package com.chibao.edu.kafka.to.elastic.service.consumer.impl;
 
 import com.chibao.edu.TwitterAvroModel;
 import com.chibao.edu.config.KafkaConfigData;
+import com.chibao.edu.config.KafkaConsumerConfigData;
+import com.chibao.edu.elastic.index.client.service.ElasticIndexClient;
+import com.chibao.edu.elastic.model.index.impl.TwitterIndexModel;
 import com.chibao.edu.kafka.admin.client.KafkaAdminClient;
 import com.chibao.edu.kafka.to.elastic.service.consumer.KafkaConsumer;
+import com.chibao.edu.kafka.to.elastic.service.trasnformer.AvroToElasticModelTransformer;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -28,27 +32,34 @@ public class TwitterKafkaConsumer implements KafkaConsumer<Long, TwitterAvroMode
     KafkaListenerEndpointRegistry kafkaListenerEndpointRegistry;
     KafkaAdminClient kafkaAdminClient;
     KafkaConfigData kafkaConfigData;
+    AvroToElasticModelTransformer avroToElasticModelTransformer;
+    ElasticIndexClient<TwitterIndexModel> elasticIndexClient;
+    KafkaConsumerConfigData kafkaConsumerConfigData;
 
     @EventListener
-    public void onAppStarted(ApplicationEvent applicationEvent){
+    public void onAppStarted(ApplicationEvent applicationEvent) {
         kafkaAdminClient.checkCreatedTopics();
         log.info("Topics with name {} is ready for operations!", kafkaConfigData.getTopicNamesToCreate().toArray());
-        Objects.requireNonNull(kafkaListenerEndpointRegistry.getListenerContainer("twitterTopicListener")).start();
+        Objects.requireNonNull(kafkaListenerEndpointRegistry
+                .getListenerContainer(kafkaConsumerConfigData.getConsumerGroupId())).start();
     }
 
     @Override
-    @KafkaListener(id = "twitterTopicListener", topics = "${kafka-config.topic-name}")
+    @KafkaListener(id = "${kafka-consumer-config.consumer-group-id}", topics = "${kafka-config.topic-name}")
     public void receive(@Payload List<TwitterAvroModel> messages,
                         @Header List<Long> keys,
                         @Header List<Integer> partitions,
                         @Header List<Long> offsets) {
         log.info("${} number of message received with keys {}, partitions {} and offsets {}, " +
-                "sending it to elastic: Thread id {} ",
+                        "sending it to elastic: Thread id {} ",
                 messages.size(),
                 keys.toString(),
                 partitions.toString(),
                 offsets.toString(),
                 Thread.currentThread().threadId());
+        List<TwitterIndexModel> elasticModels = avroToElasticModelTransformer.getElasticModels(messages);
+        List<String> documentIds = elasticIndexClient.save(elasticModels);
+        log.info("Documents saved to elasticsearch with ids {}", documentIds.toArray());
     }
 }
 
