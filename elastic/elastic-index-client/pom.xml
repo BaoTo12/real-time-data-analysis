@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.chibao.edu</groupId>
-    <artifactId>config-server</artifactId>
+    <artifactId>elastic-index-client</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -24,32 +24,12 @@
             <artifactId>app-config-data</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-server</artifactId>
+            <groupId>com.chibao.edu</groupId>
+            <artifactId>elastic-model</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <imageName>${project.groupId}/config-server:${project.version}</imageName>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>build-image</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 </project>
