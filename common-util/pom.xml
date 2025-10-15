@@ -7,34 +7,15 @@
         <groupId>com.example</groupId>
         <artifactId>microservices-demo</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <groupId>com.chibao.edu</groupId>
-    <artifactId>elastic-query-client</artifactId>
+    <artifactId>common-util</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <dependencies>
-        <dependency>
-            <groupId>com.example</groupId>
-            <artifactId>app-config-data</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.example</groupId>
-            <artifactId>elastic-config</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.chibao.edu</groupId>
-            <artifactId>elastic-model</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.chibao.edu</groupId>
-            <artifactId>common-util</artifactId>
-        </dependency>
-    </dependencies>
 
 </project>
