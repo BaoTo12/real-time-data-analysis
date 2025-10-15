@@ -37,6 +37,7 @@
         <module>elastic/elastic-config</module>
         <module>elastic/elastic-index-client</module>
         <module>elastic/elastic-model</module>
+        <module>elastic/elastic-query-client</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -70,6 +71,11 @@
     <dependencyManagement>
         <dependencies>
             <!-- ! START INTERNAL DEPs            -->
+            <dependency>
+                <groupId>com.chibao.edu</groupId>
+                <artifactId>elastic-query-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.example</groupId>
                 <artifactId>elastic-config</artifactId>
