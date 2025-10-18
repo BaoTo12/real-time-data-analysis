@@ -1,8 +1,8 @@
 package com.chibao.edu.elastic.query.service.api;
 
 import com.chibao.edu.elastic.query.service.business.ElasticQueryService;
-import com.chibao.edu.elastic.query.service.model.ElasticQueryServiceRequestModel;
-import com.chibao.edu.elastic.query.service.model.ElasticQueryServiceResponseModel;
+import com.example.elastic.query.service.common.model.ElasticQueryServiceRequestModel;
+import com.example.elastic.query.service.common.model.ElasticQueryServiceResponseModel;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

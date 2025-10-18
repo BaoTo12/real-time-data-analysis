@@ -1,6 +1,6 @@
 package com.chibao.edu.elastic.query.service.business;
 
-import com.chibao.edu.elastic.query.service.model.ElasticQueryServiceResponseModel;
+import com.example.elastic.query.service.common.model.ElasticQueryServiceResponseModel;
 
 import java.util.List;
 

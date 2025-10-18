@@ -1,4 +1,4 @@
-package com.chibao.edu.elastic.query.service.transformer;
+package com.example.elastic.query.service.common.transformer;
 
 import com.chibao.edu.elastic.model.index.impl.TwitterIndexModel;
 import com.example.elastic.query.service.common.model.ElasticQueryServiceResponseModel;

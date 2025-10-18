@@ -2,8 +2,8 @@ package com.chibao.edu.elastic.query.service.model.assembler;
 
 import com.chibao.edu.elastic.model.index.impl.TwitterIndexModel;
 import com.chibao.edu.elastic.query.service.api.ElasticDocumentController;
-import com.chibao.edu.elastic.query.service.model.ElasticQueryServiceResponseModel;
 import com.chibao.edu.elastic.query.service.transformer.ElasticToResponseModelTransformer;
+import com.example.elastic.query.service.common.model.ElasticQueryServiceResponseModel;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.lang.NonNull;

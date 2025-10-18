@@ -1,7 +1,7 @@
-package com.example.elastic.query.web.client.api.error.handler;
+package com.example.elastic.query.web.client.common.api.error.handler;
 
 
-import com.example.elastic.query.web.client.model.ElasticQueryWebClientRequestModel;
+import com.example.elastic.query.web.client.common.model.ElasticQueryWebClientRequestModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -20,7 +20,7 @@ public class ElasticQueryWebClientErrorHandler {
 
     private static final Logger LOG = LoggerFactory.getLogger(ElasticQueryWebClientErrorHandler.class);
 
-    @ExceptionHandler(org.springframework.security.access.AccessDeniedException.class)
+    @ExceptionHandler(AccessDeniedException.class)
     public String handle(AccessDeniedException e, Model model) {
         LOG.error("Access denied exception!");
         model.addAttribute("error", HttpStatus.UNAUTHORIZED.getReasonPhrase());

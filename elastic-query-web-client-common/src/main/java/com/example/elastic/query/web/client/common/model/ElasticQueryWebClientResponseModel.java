@@ -1,4 +1,4 @@
-package com.example.elastic.query.web.client.model;
+package com.example.elastic.query.web.client.common.model;
 
 
 import lombok.AllArgsConstructor;

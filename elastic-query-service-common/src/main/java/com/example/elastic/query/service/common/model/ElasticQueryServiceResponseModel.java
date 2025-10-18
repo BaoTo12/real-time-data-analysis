@@ -1,4 +1,4 @@
-package com.chibao.edu.elastic.query.service.model;
+package com.example.elastic.query.service.common.model;
 
 
 import lombok.*;

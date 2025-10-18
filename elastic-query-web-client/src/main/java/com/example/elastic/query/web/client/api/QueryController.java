@@ -1,7 +1,7 @@
 package com.example.elastic.query.web.client.api;
 
-import com.example.elastic.query.web.client.model.ElasticQueryWebClientRequestModel;
-import com.example.elastic.query.web.client.model.ElasticQueryWebClientResponseModel;
+import com.example.elastic.query.web.client.common.model.ElasticQueryWebClientRequestModel;
+import com.example.elastic.query.web.client.common.model.ElasticQueryWebClientResponseModel;
 import com.example.elastic.query.web.client.service.ElasticQueryWebClient;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

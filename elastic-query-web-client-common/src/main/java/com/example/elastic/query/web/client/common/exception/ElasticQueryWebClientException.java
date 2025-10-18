@@ -1,4 +1,4 @@
-package com.example.elastic.query.web.client.exception;
+package com.example.elastic.query.web.client.common.exception;
 
 public class ElasticQueryWebClientException extends RuntimeException {
 

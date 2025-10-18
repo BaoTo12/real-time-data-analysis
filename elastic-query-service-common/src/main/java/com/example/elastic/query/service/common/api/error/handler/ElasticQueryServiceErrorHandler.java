@@ -1,4 +1,4 @@
-package com.chibao.edu.elastic.query.service.api.error.handler;
+package com.example.elastic.query.service.common.api.error.handler;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

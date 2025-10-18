@@ -1,4 +1,5 @@
-package com.example.elastic.query.web.client.model;
+package com.example.elastic.query.service.common.model;
+
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
@@ -10,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ElasticQueryWebClientRequestModel {
+public class ElasticQueryServiceRequestModel {
     private String id;
     @NotEmpty
     private String text;

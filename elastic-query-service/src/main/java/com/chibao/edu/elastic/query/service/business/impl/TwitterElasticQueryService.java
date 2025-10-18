@@ -2,10 +2,9 @@ package com.chibao.edu.elastic.query.service.business.impl;
 
 import com.chibao.edu.elastic.model.index.impl.TwitterIndexModel;
 import com.chibao.edu.elastic.query.service.business.ElasticQueryService;
-import com.chibao.edu.elastic.query.service.model.ElasticQueryServiceResponseModel;
 import com.chibao.edu.elastic.query.service.model.assembler.ElasticQueryServiceResponseModelAssembler;
-import com.chibao.edu.elastic.query.service.transformer.ElasticToResponseModelTransformer;
 import com.chibao.edu.service.ElasticQueryClient;
+import com.example.elastic.query.service.common.model.ElasticQueryServiceResponseModel;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;

@@ -1,7 +1,8 @@
 package com.example.elastic.query.web.client.service;
 
-import com.example.elastic.query.web.client.model.ElasticQueryWebClientRequestModel;
-import com.example.elastic.query.web.client.model.ElasticQueryWebClientResponseModel;
+
+import com.example.elastic.query.web.client.common.model.ElasticQueryWebClientRequestModel;
+import com.example.elastic.query.web.client.common.model.ElasticQueryWebClientResponseModel;
 
 import java.util.List;
 
