@@ -43,6 +43,8 @@
         <module>elastic-query-web-client</module>
         <module>elastic-query-service-common</module>
         <module>elastic-query-web-client-common</module>
+        <module>reactive-elastic-query-serivce</module>
+        <module>reactive-elastic-query-web-client</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -76,6 +78,16 @@
     <dependencyManagement>
         <dependencies>
             <!-- ! START INTERNAL DEPs            -->
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>reactive-elastic-query-web-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.chibao.edu</groupId>
+                <artifactId>reactive-elastic-query-serivce</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.example</groupId>
                 <artifactId>elastic-query-web-client-common</artifactId>
