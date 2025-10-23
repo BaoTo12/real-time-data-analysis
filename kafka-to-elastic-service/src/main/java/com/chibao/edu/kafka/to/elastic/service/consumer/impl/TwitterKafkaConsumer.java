@@ -36,6 +36,13 @@ public class TwitterKafkaConsumer implements KafkaConsumer<Long, TwitterAvroMode
     ElasticIndexClient<TwitterIndexModel> elasticIndexClient;
     KafkaConsumerConfigData kafkaConsumerConfigData;
 
+    // ? “Run this method when a specific event happens in the Spring application.”
+    /*
+    * * ContextRefreshedEvent – when the app context is fully loaded
+    * * ApplicationStartedEvent – when the app starts
+    * * ApplicationReadyEvent – when the app is ready to serve requests
+    * * ContextClosedEvent - When the app context is closing (e.g. app shutdown).
+    * */
     @EventListener
     public void onAppStarted(ApplicationEvent applicationEvent) {
         kafkaAdminClient.checkCreatedTopics();

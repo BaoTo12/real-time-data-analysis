@@ -1,7 +1,6 @@
-package com.example.elastic.config;
+package com.chibao.edu.elastic.config;
 
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
-import co.elastic.clients.transport.ElasticsearchTransport;
 import com.chibao.edu.config.ElasticConfigData;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -33,7 +32,7 @@ public class ElasticSearchConfig extends ElasticsearchConfiguration {
 
     // ? ElasticsearchClient is the main object you use in your code to talk to an Elasticsearch server.
     @Bean
-    public ElasticsearchOperations elasticsearchClient() {
+    public ElasticsearchOperations elasticsearchOperations() {
         return new ElasticsearchTemplate((ElasticsearchClient) clientConfiguration());
     }
 }

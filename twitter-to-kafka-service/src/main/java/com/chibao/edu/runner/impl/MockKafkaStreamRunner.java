@@ -42,7 +42,7 @@ public class MockKafkaStreamRunner implements StreamRunner {
     private static final DateTimeFormatter DATE_FORMATTER =
             DateTimeFormatter.ofPattern(TWITTER_STATUS_DATE_FORMAT, Locale.ENGLISH);
 
-    // ?
+
     private final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor(r -> {
         Thread t = new Thread(r, "mock-twitter-stream-thread");
         t.setDaemon(true);

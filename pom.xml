@@ -40,11 +40,7 @@
         <module>elastic/elastic-query-client</module>
         <module>common-util</module>
         <module>elastic-query-service</module>
-        <module>elastic-query-web-client</module>
         <module>elastic-query-service-common</module>
-        <module>elastic-query-web-client-common</module>
-        <module>reactive-elastic-query-serivce</module>
-        <module>reactive-elastic-query-web-client</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -60,6 +56,7 @@
         <spring-cloud-dependencies.version>2025.0.0</spring-cloud-dependencies.version>
         <avro.version>1.11.4</avro.version>
         <elasticsearch.version>9.1.5</elasticsearch.version>
+        <kafka-streams-avro-serde.version>5.5.1</kafka-streams-avro-serde.version>
     </properties>
 <!--    ! COMMON DEPENDENCIES-->
     <dependencies>
@@ -80,27 +77,7 @@
             <!-- ! START INTERNAL DEPs            -->
             <dependency>
                 <groupId>com.example</groupId>
-                <artifactId>reactive-elastic-query-web-client</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.chibao.edu</groupId>
-                <artifactId>reactive-elastic-query-serivce</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.example</groupId>
-                <artifactId>elastic-query-web-client-common</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.example</groupId>
                 <artifactId>elastic-query-service-common</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.example</groupId>
-                <artifactId>elastic-query-web-client</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

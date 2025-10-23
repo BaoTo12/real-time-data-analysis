@@ -13,8 +13,8 @@
     <artifactId>twitter-to-kafka-service</artifactId>
 
     <properties>
-        <maven.compiler.source>24</maven.compiler.source>
-        <maven.compiler.target>24</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -70,21 +70,20 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>3.4.5</version>
                 <configuration>
-                    <image>
-                        <name>${project.groupId}/twitter-to-kafka-service:${project.version}</name>
-                    </image>
+                    <from>
+                        <image>gcr.io/distroless/java21-debian12</image>
+                    </from>
+                    <to>
+                        <image>${project.artifactId}:${project.version}</image>
+                    </to>
+                    <container>
+                        <mainClass>com.chibao.edu.TwitterToKafkaServiceApplication</mainClass>
+                    </container>
                 </configuration>
-                <executions>
-                    <execution>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>build-image</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

@@ -7,5 +7,8 @@ spring:
   cloud:
     config:
       name: kafka-to-elastic-service, config-client
-      uri: localhost://8888
+      uri: http://localhost:8888
       fast-fail: true
+
+
+spring.config.import: "configserver:"

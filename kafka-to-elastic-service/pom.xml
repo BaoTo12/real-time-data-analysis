@@ -64,18 +64,20 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>build-image</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>3.4.5</version>
                 <configuration>
-                    <imageName>${project.version}/kafka-to-elastic-service:${project.version}</imageName>
+                    <from>
+                        <image>gcr.io/distroless/java21-debian12</image>
+                    </from>
+                    <to>
+                        <image>${project.artifactId}:${project.version}</image>
+                    </to>
+
+                    <container>
+                        <mainClass>com.chibao.edu.kafka.to.elastic.service.KafkaToElasticServiceApplication</mainClass>
+                    </container>
                 </configuration>
             </plugin>
         </plugins>
