@@ -3,6 +3,7 @@ server:
 
 kafka-config:
   bootstrap-servers: localhost:19092, localhost:29092, localhost:39092
+  schema-registry-url-key: schema.registry.url
   schema-registry-url: schema.registry.url
   schema-registry-http-url: http://localhost:8081
   topic-name: twitter-topic
@@ -34,8 +35,12 @@ retry-config:
   maxAttempts: 3
   sleep-time-ms: 2000
 
+spring:
+  elasticsearch:
+    uris: localhost:9200
+    connection-timeout: 5000
+    socket-timeout: 30000
+
 elastic-config:
   index-name: twitter-index
-  connection-url: http://localhost:9200
-  connection-timeout-ms: 5000
-  socket-timeout-ms: 30000
+  is-repository: true

@@ -9,6 +9,9 @@ spring:
       name: kafka-to-elastic-service, config-client
       uri: http://localhost:8888
       fast-fail: true
-
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
 
 spring.config.import: "configserver:"
