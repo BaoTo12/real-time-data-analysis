@@ -16,4 +16,3 @@ spring:
       fail-fast: true
 
 
-spring.config.import: "configserver:"

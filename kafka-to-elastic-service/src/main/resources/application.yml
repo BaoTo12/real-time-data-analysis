@@ -11,7 +11,7 @@ spring:
       fast-fail: true
 logging:
   level:
-    root: INFO
-    org.springframework.web: DEBUG
+    root: ERROR
+    org.springframework.web: INFO
 
 spring.config.import: "configserver:"

@@ -16,6 +16,7 @@ import org.springframework.context.ApplicationEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.config.KafkaListenerEndpointRegistry;
+import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
@@ -53,18 +54,18 @@ public class TwitterKafkaConsumer implements KafkaConsumer<Long, TwitterAvroMode
 
     @Override
     @KafkaListener(id = "${kafka-consumer-config.consumer-group-id}", topics = "${kafka-config.topic-name}")
-    public void receive(@Payload List<TwitterAvroModel> messages,
-                        @Header List<Long> keys,
-                        @Header List<Integer> partitions,
-                        @Header List<Long> offsets) {
-        log.info("${} number of message received with keys {}, partitions {} and offsets {}, " +
+    public void receive(@Payload TwitterAvroModel messages,
+                        @Header(KafkaHeaders.RECEIVED_KEY) Long key,
+                        @Header(KafkaHeaders.RECEIVED_PARTITION) Integer partition,
+                        @Header(KafkaHeaders.OFFSET) Long offset) {
+        log.info("{} number of message received with keys {}, partitions {} and offsets {}, " +
                         "sending it to elastic: Thread id {} ",
-                messages.size(),
-                keys.toString(),
-                partitions.toString(),
-                offsets.toString(),
+                messages.getText(),
+                key,
+                partition,
+                offset,
                 Thread.currentThread().threadId());
-        List<TwitterIndexModel> elasticModels = avroToElasticModelTransformer.getElasticModels(messages);
+        List<TwitterIndexModel> elasticModels = avroToElasticModelTransformer.getElasticModels(List.of(messages));
         List<String> documentIds = elasticIndexClient.save(elasticModels);
         log.info("Documents saved to elasticsearch with ids {}", documentIds.toArray());
     }

@@ -4,7 +4,7 @@ server:
 kafka-config:
   bootstrap-servers: localhost:19092, localhost:29092, localhost:39092
   schema-registry-url-key: schema.registry.url
-  schema-registry-url: schema.registry.url
+  schema-registry-url: http://localhost:8081
   schema-registry-http-url: http://localhost:8081
   topic-name: twitter-topic
   topic-names-to-create:
@@ -17,6 +17,7 @@ kafka-consumer-config:
   auto-offset-reset: earliest
   specific-avro-reader-key: specific.avro.reader
   specific-avro-reader: true
+  specific-avro-reader-schema: com.chibao.edu.TwitterAvroModel
   batch-listener: true
   auto-startup: false
   concurrency-level: 3

@@ -19,6 +19,9 @@ spring:
         # * Hoặc một local repo (trên ổ cứng) → file:///...
         git:
           # ? file:// is a file protocol like http://, https:// that indicates using the current filesystem
-          uri: file:///C:/Users/Admin/Desktop/projects/microservices-demo/config-server-repository
+          uri: file:///C:/Users/Admin/Desktop/projects/real-time-data-analysis/config-server-repository
           clone-on-startup: true
     fail-fast: true
+  output:
+    ansi:
+      enabled: ALWAYS

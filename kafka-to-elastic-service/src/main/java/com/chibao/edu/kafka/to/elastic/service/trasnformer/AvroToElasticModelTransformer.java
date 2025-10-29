@@ -14,13 +14,13 @@ public class AvroToElasticModelTransformer {
 
     public List<TwitterIndexModel> getElasticModels(List<TwitterAvroModel> twitterAvroModels) {
         return twitterAvroModels.stream()
-                .map(twitterAvroModel -> TwitterIndexModel
-                        .builder()
+                .map(twitterAvroModel -> TwitterIndexModel.builder()
                         .userId(twitterAvroModel.getUserId())
                         .id(String.valueOf(twitterAvroModel.getId()))
                         .text(twitterAvroModel.getText())
-                        .createdAt(LocalDateTime.ofInstant(Instant.ofEpochMilli(twitterAvroModel.getCreatedAt())
-                                , ZoneId.systemDefault()))
+                        .createdAt(twitterAvroModel.getCreatedAt() != null
+                                ? Instant.ofEpochMilli(twitterAvroModel.getCreatedAt())
+                                : null)
                         .build()
                 ).toList();
     }

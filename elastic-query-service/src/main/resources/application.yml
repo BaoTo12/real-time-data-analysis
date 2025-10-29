@@ -7,9 +7,6 @@ spring:
     config:
       name: elastic-query-service, config-client
       uri: http://localhost:8888
-#      username:
-#      password:
-
 
 elastic-query-service:
   version: v1

@@ -25,18 +25,18 @@ services:
       - "8888:8888"
     volumes:
       - "./docker-logs:/workspace/config-server/logs"
+      - "../config-server-repository:/config-repo"
     environment:
       - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5006 -Xms128m -Xmx256m"
     networks:
-      - ${GLOBAL_NETWORK:-services}
+      - application
   kafka-to-elastic-service:
     image: kafka-to-elastic-service:${SERVICE_VERSION:-latest}
     ports:
-      - "5006:5006"
+      - "5007:5007"
     volumes:
       - "./docker-logs:/workspace/kafka-to-elastic-service/logs"
     user: root
-    entrypoint: [ "check-kafka-topics-created.sh" ]
     depends_on:
       - config-server
       - twitter-to-kafka-service
@@ -47,7 +47,7 @@ services:
       - elastic-2
       - elastic-3
     environment:
-      - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5006 -Xms128m -Xmx256m"
+      - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5007 -Xms128m -Xmx256m"
       - "LOGGING_LEVEL_COM_MICROSERVICES_DEMO=info"
       - "LOGGING_LEVEL_ROOT=info"
       - "KAFKA-CONFIG_TOPIC-NAME=twitter-topic"
@@ -57,7 +57,7 @@ services:
       - "ELASTIC-CONFIG_INDEX-NAME=twitter-index"
       - "ELASTIC-CONFIG_CONNECTION-URL=http://elastic-1:9200"
     networks:
-      - ${GLOBAL_NETWORK:-services}
+      - application
   elastic-query-service:
     image: elastic-query-service:${SERVICE_VERSION:-latest}
     ports:
@@ -66,7 +66,6 @@ services:
     volumes:
       - "./docker-logs:/workspace/elastic-query-service/logs"
     user: root
-    entrypoint: [ "check-config-server-started.sh" ]
     depends_on:
       - config-server
       - elastic-1
@@ -83,4 +82,4 @@ services:
       - "SPRING_CLOUD_CONFIG_URI=http://config-server:8888"
       - "ENCRYPT_KEY=${ENCRYPT_KEY}"
     networks:
-      - ${GLOBAL_NETWORK:-services}
+      - application

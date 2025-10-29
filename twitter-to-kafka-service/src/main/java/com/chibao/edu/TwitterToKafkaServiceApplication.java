@@ -20,6 +20,7 @@ public class TwitterToKafkaServiceApplication implements CommandLineRunner {
     StreamInitializer streamInitializer;
 
     public static void main(String[] args) {
+        log.info("Starting TwitterToKafkaServiceApplication...");
         SpringApplication.run(TwitterToKafkaServiceApplication.class, args);
     }
 
@@ -33,7 +34,12 @@ public class TwitterToKafkaServiceApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         log.info("Application start ......");
-        streamInitializer.init();
-        streamRunner.start();
+        try {
+            streamInitializer.init();
+            streamRunner.start();
+        } catch (Exception e) {
+            log.error("Error starting TwitterToKafkaServiceApplication: {}", e.getMessage(), e);
+            throw e;
+        }
     }
 }
