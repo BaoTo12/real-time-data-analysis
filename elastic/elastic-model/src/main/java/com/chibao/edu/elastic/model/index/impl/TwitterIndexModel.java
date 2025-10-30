@@ -1,7 +1,6 @@
 package com.chibao.edu.elastic.model.index.impl;
 
 import com.chibao.edu.elastic.model.index.IndexModel;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
@@ -10,7 +9,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
-import java.time.Instant;
+import java.time.OffsetDateTime;
 
 @Data
 @Builder
@@ -25,7 +24,7 @@ public class TwitterIndexModel implements IndexModel {
     private String text;
 
     // ? help translating between LocalDateTime to Date type of elastic search
-    @Field(type = FieldType.Date, format = DateFormat.date_time)
-    private Instant createdAt;
+    @Field(type = FieldType.Date, format = DateFormat.date_time, pattern = "yyyy-MM-dd'T'HH:mm:ssZ")
+    private OffsetDateTime createdAt;
 
 }

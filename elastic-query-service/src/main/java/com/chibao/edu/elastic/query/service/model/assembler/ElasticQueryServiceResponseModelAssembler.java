@@ -14,7 +14,9 @@ import java.util.List;
 @Component
 public class ElasticQueryServiceResponseModelAssembler extends
         RepresentationModelAssemblerSupport<TwitterIndexModel, ElasticQueryServiceResponseModel> {
-
+    // * RepresentationModelAssemblerSupport:
+    // để chuyển đổi dữ liệu (entity/domain model) sang representation model (REST response model)
+    // có thể chứa hypermedia links (các đường link HATEOAS).
     private final ElasticToResponseModelTransformer elasticToResponseModelTransformer;
 
     public ElasticQueryServiceResponseModelAssembler(
