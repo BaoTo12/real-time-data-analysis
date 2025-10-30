@@ -17,11 +17,9 @@ public class ElasticQueryServiceResponseModelAssembler extends
 
     private final ElasticToResponseModelTransformer elasticToResponseModelTransformer;
 
-    public ElasticQueryServiceResponseModelAssembler
-            (Class<?> controllerClass,
-             Class<ElasticQueryServiceResponseModel> resourceType,
-             ElasticToResponseModelTransformer elasticToResponseModelTransformer) {
-        super(controllerClass, resourceType);
+    public ElasticQueryServiceResponseModelAssembler(
+            ElasticToResponseModelTransformer elasticToResponseModelTransformer) {
+        super(ElasticDocumentController.class, ElasticQueryServiceResponseModel.class);
         this.elasticToResponseModelTransformer = elasticToResponseModelTransformer;
     }
 
@@ -43,7 +41,7 @@ public class ElasticQueryServiceResponseModelAssembler extends
         return responseModel;
     }
 
-    public List<ElasticQueryServiceResponseModel> toModels(List<TwitterIndexModel> twitterIndexModels){
+    public List<ElasticQueryServiceResponseModel> toModels(List<TwitterIndexModel> twitterIndexModels) {
         return twitterIndexModels.stream().map(this::toModel).toList();
     }
 }

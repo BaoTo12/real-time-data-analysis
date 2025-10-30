@@ -19,12 +19,11 @@ public class TwitterElasticRepositoryIndexClient implements ElasticIndexClient<T
 
     private final TwitterElasticsearchIndexRepository twitterElasticsearchIndexRepository;
 
-
-
     @Override
     public List<String> save(List<TwitterIndexModel> documents) {
         List<TwitterIndexModel> repositoryResponse =
                 (List<TwitterIndexModel>) twitterElasticsearchIndexRepository.saveAll(documents);
+        log.info("Successfully indexing TwitterIndexModel: {}", repositoryResponse);
         List<String> ids = repositoryResponse.stream().map(TwitterIndexModel::getId).toList();
         log.info("Documents indexed successfully with type: {} and ids: {}", TwitterIndexModel.class.getName(), ids);
         return ids;

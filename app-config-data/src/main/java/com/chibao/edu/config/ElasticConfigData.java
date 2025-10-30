@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Configuration;
 
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "spring.elasticsearch")
+@ConfigurationProperties(prefix = "elastic-config")
 public class ElasticConfigData {
     private String indexName;
-    private String uris;
+    private String connectionUrl;
     private Integer connectionTimeout;
     private Integer socketTimeout;
 }

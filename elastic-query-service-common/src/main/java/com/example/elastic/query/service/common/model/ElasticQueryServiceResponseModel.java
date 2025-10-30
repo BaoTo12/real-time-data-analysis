@@ -1,10 +1,11 @@
 package com.example.elastic.query.service.common.model;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.springframework.hateoas.RepresentationModel;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @Setter
 @Getter
@@ -15,6 +16,7 @@ public class ElasticQueryServiceResponseModel extends RepresentationModel<Elasti
     private String id;
     private Long userId;
     private String text;
-    private LocalDateTime createdAt;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssZ", timezone = "UTC")
+    private Instant createdAt;
 
 }

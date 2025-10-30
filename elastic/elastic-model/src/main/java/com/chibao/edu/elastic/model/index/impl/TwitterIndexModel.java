@@ -25,7 +25,7 @@ public class TwitterIndexModel implements IndexModel {
     private String text;
 
     // ? help translating between LocalDateTime to Date type of elastic search
-    @Field(type = FieldType.Date, format = DateFormat.date_time) // no pattern needed
+    @Field(type = FieldType.Date, format = DateFormat.date_time)
     private Instant createdAt;
 
 }
