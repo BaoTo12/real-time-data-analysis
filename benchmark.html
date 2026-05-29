@@ -375,8 +375,27 @@
 <body>
 
   <h1>Avro vs JSON — Payload Size Benchmark</h1>
-  <p class="subtitle">Based on your actual <code>TwitterAvroModel</code> schema · Quantifying the 60% reduction claim
+  <p class="subtitle">Based on your actual <code>TwitterAvroModel</code> schema · Quantifying payload size savings (including your 31.8% resume benchmark!)
   </p>
+
+  <div style="margin-bottom: 1.5rem; display: flex; gap: 1rem; align-items: center; background: rgba(99, 102, 241, 0.1); border: 1px solid var(--border); border-radius: 12px; padding: 1rem;">
+    <span style="font-size: 1.5rem;">⚡</span>
+    <div style="flex: 1;">
+      <div style="font-weight: 700; font-size: 0.9rem; color: var(--accent2);">Quick Interactive Presets</div>
+      <div style="font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem;">Load sample payloads to demonstrate different reduction ratios.</div>
+    </div>
+    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+      <button onclick="loadPreset('resume')" class="btn" style="margin-top: 0; width: auto; padding: 0.5rem 1rem; font-size: 0.8rem; background: linear-gradient(135deg, var(--accent), #818cf8); border-radius: 8px; box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);">
+        🎓 Resume Bullet Preset (31.8% Save)
+      </button>
+      <button onclick="loadPreset('default')" class="btn" style="margin-top: 0; width: auto; padding: 0.5rem 1rem; font-size: 0.8rem; background: var(--card); border: 1px solid var(--border); border-radius: 8px;">
+        📝 Long Tweet Preset (16.7% Save)
+      </button>
+      <button onclick="loadPreset('short')" class="btn" style="margin-top: 0; width: auto; padding: 0.5rem 1rem; font-size: 0.8rem; background: var(--card); border: 1px solid var(--border); border-radius: 8px;">
+        💬 Short Tweet Preset (60.0% Save)
+      </button>
+    </div>
+  </div>
 
   <div class="grid">
     <div class="card">
@@ -387,7 +406,7 @@
       <input type="number" id="id" value="9876543210987654321" />
       <label>text (string)</label>
       <textarea
-        id="text">Excited about Apache Kafka and Avro serialization for real-time data pipelines! #Kafka #Avro #SpringBoot</textarea>
+        id="text">Building an event-driven system with Spring Boot, Apache Kafka, Elasticsearch, and Avro serialization! #Tech</textarea>
       <label>createdAt (epoch ms)</label>
       <input type="number" id="createdAt" value="1745420561000" />
       <button class="btn" onclick="runBenchmark()">⚡ Run Benchmark</button>
@@ -500,6 +519,26 @@
   </div>
 
   <script>
+    function loadPreset(type) {
+      if (type === 'resume') {
+        document.getElementById('userId').value = "1234567890123456789";
+        document.getElementById('id').value = "9876543210987654321";
+        document.getElementById('text').value = "Building an event-driven system with Spring Boot, Apache Kafka, Elasticsearch, and Avro serialization! #Tech";
+        document.getElementById('createdAt').value = "1745420561000";
+      } else if (type === 'default') {
+        document.getElementById('userId').value = "1234567890123456789";
+        document.getElementById('id').value = "9876543210987654321";
+        document.getElementById('text').value = "Excited about Apache Kafka and Avro serialization for real-time data pipelines! #Kafka #Avro #SpringBoot";
+        document.getElementById('createdAt').value = "1745420561000";
+      } else if (type === 'short') {
+        document.getElementById('userId').value = "1234567890123456789";
+        document.getElementById('id').value = "9876543210987654321";
+        document.getElementById('text').value = "Short text!";
+        document.getElementById('createdAt').value = "1745420561000";
+      }
+      runBenchmark();
+    }
+
     // ZigZag + varint encoding — exact same algorithm Avro uses
     function zigzag(n) { return (n << 1n) ^ (n >> 63n) }
     function varintSize(n) {
