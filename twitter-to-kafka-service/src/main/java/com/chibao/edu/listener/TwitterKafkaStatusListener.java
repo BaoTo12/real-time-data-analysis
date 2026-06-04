@@ -1,8 +1,8 @@
 package com.chibao.edu.listener;
 
-import com.chibao.edu.TwitterAvroModel;
-import com.chibao.edu.config.KafkaConfigData;
-import com.chibao.edu.kafka.producer.config.service.KafkaProducer;
+import com.chibao.edu.common.kafka.model.TwitterAvroModel;
+import com.chibao.edu.common.config.KafkaConfigData;
+import com.chibao.edu.common.kafka.producer.service.KafkaProducer;
 import com.chibao.edu.transformer.TwitterStatusToAvroTransformer;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

@@ -1,5 +1,6 @@
 package com.chibao.edu;
 
+import com.chibao.edu.common.kafka.model.TwitterAvroModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.avro.io.BinaryEncoder;
 import org.apache.avro.io.DatumWriter;

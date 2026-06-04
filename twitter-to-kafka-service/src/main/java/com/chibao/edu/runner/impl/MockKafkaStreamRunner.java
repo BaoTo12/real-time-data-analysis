@@ -1,6 +1,6 @@
 package com.chibao.edu.runner.impl;
 
-import com.chibao.edu.config.TwitterToKafkaServiceConfigData;
+import com.chibao.edu.common.config.TwitterToKafkaServiceConfigData;
 import com.chibao.edu.exception.TwitterToKafkaServiceException;
 import com.chibao.edu.listener.TwitterKafkaStatusListener;
 import com.chibao.edu.runner.StreamRunner;

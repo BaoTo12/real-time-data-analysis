@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 
 @SpringBootApplication(scanBasePackages = "com.chibao.edu")
-@EnableElasticsearchRepositories(basePackages = "com.chibao.edu.elastic.index.client.repository")
+@EnableElasticsearchRepositories(basePackages = "com.chibao.edu.common.elastic.index.repository")
 public class KafkaToElasticServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(KafkaToElasticServiceApplication.class, args);

@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Import;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 
 @SpringBootApplication(scanBasePackages = "com.chibao.edu")
-@EnableElasticsearchRepositories(basePackages = "com.chibao.edu.repository")
-@Import(com.chibao.edu.elastic.config.ElasticSearchConfig.class)
+@EnableElasticsearchRepositories(basePackages = "com.chibao.edu.common.elastic.query.repository")
+@Import(com.chibao.edu.common.elastic.config.ElasticSearchConfig.class)
 public class ElasticQueryServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(ElasticQueryServiceApplication.class, args);

@@ -1,11 +1,11 @@
 package com.chibao.edu.kafka.to.elastic.service.consumer.impl;
 
-import com.chibao.edu.TwitterAvroModel;
-import com.chibao.edu.config.KafkaConfigData;
-import com.chibao.edu.config.KafkaConsumerConfigData;
-import com.chibao.edu.elastic.index.client.service.ElasticIndexClient;
-import com.chibao.edu.elastic.model.index.impl.TwitterIndexModel;
-import com.chibao.edu.kafka.admin.client.KafkaAdminClient;
+import com.chibao.edu.common.kafka.model.TwitterAvroModel;
+import com.chibao.edu.common.config.KafkaConfigData;
+import com.chibao.edu.common.config.KafkaConsumerConfigData;
+import com.chibao.edu.common.elastic.index.service.ElasticIndexClient;
+import com.chibao.edu.common.elastic.model.impl.TwitterIndexModel;
+import com.chibao.edu.common.kafka.admin.client.KafkaAdminClient;
 import com.chibao.edu.kafka.to.elastic.service.consumer.KafkaConsumer;
 import com.chibao.edu.kafka.to.elastic.service.trasnformer.AvroToElasticModelTransformer;
 import lombok.AccessLevel;
@@ -54,20 +54,18 @@ public class TwitterKafkaConsumer implements KafkaConsumer<Long, TwitterAvroMode
 
     @Override
     @KafkaListener(id = "${kafka-consumer-config.consumer-group-id}", topics = "${kafka-config.topic-name}")
-    public void receive(@Payload TwitterAvroModel messages,
-                        @Header(KafkaHeaders.RECEIVED_KEY) Long key,
-                        @Header(KafkaHeaders.RECEIVED_PARTITION) Integer partition,
-                        @Header(KafkaHeaders.OFFSET) Long offset) {
-        log.info("the message: {} number of message received with keys: {}, partitions: {} and offsets: {}, " +
-                        "sending it to elastic: Thread id: {} ",
-                messages.getText(),
-                key,
-                partition,
-                offset,
-                Thread.currentThread().threadId());
-        List<TwitterIndexModel> elasticModels = avroToElasticModelTransformer.getElasticModels(List.of(messages));
+    public void receive(@Payload List<TwitterAvroModel> messages,
+                        @Header(KafkaHeaders.RECEIVED_KEY) List<Long> keys,
+                        @Header(KafkaHeaders.RECEIVED_PARTITION) List<Integer> partitions,
+                        @Header(KafkaHeaders.OFFSET) List<Long> offsets) {
+        log.info("{} number of messages received with keys {}, partitions {} and offsets {}, sending to elasticsearch",
+                messages.size(),
+                keys,
+                partitions,
+                offsets);
+        List<TwitterIndexModel> elasticModels = avroToElasticModelTransformer.getElasticModels(messages);
         List<String> documentIds = elasticIndexClient.save(elasticModels);
-        log.info("Documents saved to elasticsearch with ids {}", documentIds.toArray());
+        log.info("Documents saved to elasticsearch with ids {}", documentIds);
     }
 }
 

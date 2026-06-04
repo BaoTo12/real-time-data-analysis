@@ -1,6 +1,6 @@
 package com.chibao.edu.transformer;
 
-import com.chibao.edu.TwitterAvroModel;
+import com.chibao.edu.common.kafka.model.TwitterAvroModel;
 import org.springframework.stereotype.Component;
 import twitter4j.Status;
 @Component

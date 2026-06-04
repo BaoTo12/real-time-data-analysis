@@ -1,7 +1,7 @@
 package com.chibao.edu.elastic.query.service.transformer;
 
-import com.chibao.edu.elastic.model.index.impl.TwitterIndexModel;
-import com.example.elastic.query.service.common.model.ElasticQueryServiceResponseModel;
+import com.chibao.edu.common.elastic.model.impl.TwitterIndexModel;
+import com.chibao.edu.common.query.model.ElasticQueryServiceResponseModel;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;

@@ -1,8 +1,8 @@
 package com.chibao.edu.init.impl;
 
-import com.chibao.edu.config.KafkaConfigData;
+import com.chibao.edu.common.config.KafkaConfigData;
 import com.chibao.edu.init.StreamInitializer;
-import com.chibao.edu.kafka.admin.client.KafkaAdminClient;
+import com.chibao.edu.common.kafka.admin.client.KafkaAdminClient;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;

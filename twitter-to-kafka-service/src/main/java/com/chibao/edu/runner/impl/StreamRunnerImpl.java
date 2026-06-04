@@ -1,6 +1,6 @@
 package com.chibao.edu.runner.impl;
 
-import com.chibao.edu.config.TwitterToKafkaServiceConfigData;
+import com.chibao.edu.common.config.TwitterToKafkaServiceConfigData;
 import com.chibao.edu.listener.TwitterKafkaStatusListener;
 import com.chibao.edu.runner.StreamRunner;
 import jakarta.annotation.PreDestroy;
@@ -34,11 +34,6 @@ public class StreamRunnerImpl implements StreamRunner {
     public void start() throws TwitterException {
         twitterStream = new TwitterStreamFactory().getInstance();
         twitterStream.addListener(twitterKafkaStatusListener);
-        extracted();
-
-    }
-
-    private void extracted() {
         String[] keywords = twitterToKafkaServiceConfigData.getTwitterKeywords().toArray(new String[0]);
         FilterQuery filterQuery = new FilterQuery(keywords);
         twitterStream.filter(filterQuery);

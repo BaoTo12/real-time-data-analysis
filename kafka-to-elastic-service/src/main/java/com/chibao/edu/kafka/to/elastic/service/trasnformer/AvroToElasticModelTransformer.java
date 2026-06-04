@@ -1,7 +1,7 @@
 package com.chibao.edu.kafka.to.elastic.service.trasnformer;
 
-import com.chibao.edu.TwitterAvroModel;
-import com.chibao.edu.elastic.model.index.impl.TwitterIndexModel;
+import com.chibao.edu.common.kafka.model.TwitterAvroModel;
+import com.chibao.edu.common.elastic.model.impl.TwitterIndexModel;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;

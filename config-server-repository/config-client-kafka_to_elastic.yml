@@ -17,7 +17,7 @@ kafka-consumer-config:
   auto-offset-reset: earliest
   specific-avro-reader-key: specific.avro.reader
   specific-avro-reader: true
-  specific-avro-reader-schema: com.chibao.edu.TwitterAvroModel
+  specific-avro-reader-schema: com.chibao.edu.common.kafka.model.TwitterAvroModel
   batch-listener: true
   auto-startup: false
   concurrency-level: 3
